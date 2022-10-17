@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const condicionesSchemas = mongoose.Schema({
-    nombre:{
+    Nombre:{
         type:String,
         Required:true,
     },
@@ -29,6 +29,11 @@ const condicionesSchemas = mongoose.Schema({
     usuario:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Usuario'
+    },
+    user:{
+        type:String,
+        required:false,
+        trim:true,
     },
 },
 {

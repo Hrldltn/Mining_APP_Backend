@@ -42,15 +42,14 @@ const actualizarCondicion = async (req,res) => {
     return res.status(404).json({msg:'No Encontrado'})
   }
 
-  if(condicion.usuario._id.toString() !== req.usuario._id.toString()){
-    return res.json({msg:'Accion no valida'})
-  }
   //actualizar condicion
+  condicion.nombre = req.body.nombre || condicion.nombre
   condicion.modelo = req.body.modelo || condicion.modelo
   condicion.cantidad = req.body.cantidad || condicion.cantidad
-  condicion.condicion = req.body.condicion || condicion.condicion
-  condicion.area = req.body.area || condicion.area
+  condicion.estado = req.body.estado || condicion.estado
   condicion.fecha = req.body.fecha || condicion.fecha
+  condicion.galla = req.body.galla || condicion.galla
+  condicion.usuario = req.body.usuario || condicion.usuario
 
   try {
     const condicionActualizado = await condicion.save()
@@ -68,9 +67,7 @@ const eliminarCondicion = async (req,res) => {
     return res.status(404).json({msg:'Condiciones No Encontradas'})
   }
 
-  if(condicion.usuario._id.toString() !== req.usuario._id.toString()){
-    return res.json({msg:'Accion no valida'})
-  }
+
   try {
     await condicion.deleteOne()
     console.log(condicion.usuario._id.toString() )

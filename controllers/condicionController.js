@@ -48,7 +48,7 @@ const actualizarCondicion = async (req,res) => {
   condicion.cantidad = req.body.cantidad || condicion.cantidad
   condicion.estado = req.body.estado || condicion.estado
   condicion.fecha = req.body.fecha || condicion.fecha
-  condicion.galla = req.body.galla || condicion.galla
+
   condicion.usuario = req.body.usuario || condicion.usuario
 
   try {
@@ -70,8 +70,6 @@ const eliminarCondicion = async (req,res) => {
 
   try {
     await condicion.deleteOne()
-    console.log(condicion.usuario._id.toString() )
-    console.log(req.usuario._id.toString() )
     res.json({msg:'Las condiciones de las perforadoras fueron eliminadas'})
   } catch (error) {
     console.log(error)

@@ -22,10 +22,6 @@ const condicionesSchemas = mongoose.Schema({
         required:true,
         default:Date.now()
     },
-    galla:{
-        type:String,
-        Required:true,
-    },
     usuario:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Usuario'

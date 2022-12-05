@@ -6,16 +6,15 @@ import UsuarioRoutes from './routes/usuarioRoutes.js'
 import condicionRoutes from './routes/condicionRoutes.js'
 
 const app = express()
+
+app.use(express.urlencoded({extended: true}));
 app.use(express.json())
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
- 
-// // Set EJS as templating engine
-// app.set("view engine", "ejs");
+
 
 dotenv.config()
 
 conectarDB()
+
 
 const dominiosAuthorization = [process.env.FRONTEND_URL]
 
@@ -31,7 +30,6 @@ const corsOptions ={
 app.use(cors(corsOptions))
 app.use('/api/usuario',UsuarioRoutes)
 app.use('/api/condicion',condicionRoutes)
-
 
 const PORT=process.env.PORT || 4000
 

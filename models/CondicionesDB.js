@@ -22,6 +22,22 @@ const condicionesSchemas = mongoose.Schema({
         required:true,
         default:Date.now()
     },
+    observacion:{
+        type:String,
+        Required:true,
+    },
+    detallesMantencion:{
+        type:Array,
+        Required:false,
+    },
+    detallesMalEstado:{
+        type:Array,
+        Required:false,
+    },
+    imagen:{
+        type:String,
+
+    },
     usuario:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Usuario'
@@ -36,8 +52,13 @@ const condicionesSchemas = mongoose.Schema({
     timestamps:true,
 }
 )
+condicionesSchemas.methods.setImgUrl=function setImgUrl(filename){
+    this.imagen=`${process.env.HOST}:${process.env.PORT}/public/${filename}`
+}
 
 const Condicion = mongoose.model('Condiciones',condicionesSchemas)
+
+
 
 export default Condicion
 

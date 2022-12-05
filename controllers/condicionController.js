@@ -2,7 +2,6 @@ import Condicion from '../models/CondicionesDB.js'
 
 const agregarCondicion = async (req,res) => {
   const condicion = new Condicion (req.body)
-  condicion.usuario = req.usuario._id
   try {
     const condicionGuardada = await condicion.save()
     res.json ( condicionGuardada )
@@ -13,13 +12,37 @@ const agregarCondicion = async (req,res) => {
 }
 
 const obtenerCondiciones = async (req,res) => {
-  const condiciones = await Condicion.find()
-  
+    
+  const condiciones = await Condicion.find().sort( { fecha: 1 } )
   if(!condiciones){
     return res.status(404).json({msg:'No Encontrado!'})
   }
 
   res.json(condiciones)
+}
+
+const obtenerCondicionesDia = async (req,res) => {
+  let today = new Date();
+  let query = {
+      $expr: { // la siguiente es una expresión de agregación
+        $and: [ // indica que cada comparación entre elementos del array se debe satisfacer
+        { $eq: [ { $year:   '$fecha' }, { $year: today } ] },  // devuelve true si se cumple la igualdad de loss elementos
+        { $eq: [ { $month:   '$fecha' }, { $month: today } ] },
+        { $eq: [ { $dayOfMonth: '$fecha' }, { $dayOfMonth: today } ] } 
+      ]
+    }
+  }
+  try {
+    const CondicionesDia = await Condicion.find(query)
+    res.json(CondicionesDia)
+
+    if(!CondicionesDia){
+      return res.status(404).json({msg:'No Encontrado!'})
+    }   
+  } catch (error) {
+    console.log(error)
+  }
+
 }
   
 const obtenerCondicion = async (req,res) => {
@@ -48,7 +71,9 @@ const actualizarCondicion = async (req,res) => {
   condicion.cantidad = req.body.cantidad || condicion.cantidad
   condicion.estado = req.body.estado || condicion.estado
   condicion.fecha = req.body.fecha || condicion.fecha
-
+  condicion.observacion = req.body.observacion || condicion.observacion
+  condicion.detallesMantencion = req.body.detallesMantencion || condicion.detallesMantencion
+  condicion.detallesMalEstado = req.body.detallesMalEstado || condicion.detallesMalEstado
   condicion.usuario = req.body.usuario || condicion.usuario
 
   try {
@@ -81,5 +106,6 @@ export {
   obtenerCondiciones,
   obtenerCondicion,
   actualizarCondicion,
-  eliminarCondicion
+  eliminarCondicion,
+  obtenerCondicionesDia
 }

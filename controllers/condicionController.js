@@ -66,7 +66,7 @@ const actualizarCondicion = async (req,res) => {
   }
 
   //actualizar condicion
-  condicion.nombre = req.body.nombre || condicion.nombre
+  condicion.Nombre = req.body.Nombre || condicion.Nombre
   condicion.modelo = req.body.modelo || condicion.modelo
   condicion.cantidad = req.body.cantidad || condicion.cantidad
   condicion.estado = req.body.estado || condicion.estado

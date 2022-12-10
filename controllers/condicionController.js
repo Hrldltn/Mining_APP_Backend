@@ -13,7 +13,7 @@ const agregarCondicion = async (req,res) => {
 
 const obtenerCondiciones = async (req,res) => {
     
-  const condiciones = await Condicion.find().sort( { fecha: 1 } )
+  const condiciones = await Condicion.find().sort( { fecha: -1 } )
   if(!condiciones){
     return res.status(404).json({msg:'No Encontrado!'})
   }

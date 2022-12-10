@@ -4,7 +4,12 @@ import cors from 'cors'
 import conectarDB from './config/db.js'
 import UsuarioRoutes from './routes/usuarioRoutes.js'
 import condicionRoutes from './routes/condicionRoutes.js'
+import TronaduraRoutes from './routes/TronaduraRoutes.js'
+import path from 'path'
+import {fileURLToPath} from 'url'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 const app = express()
 
 app.use(express.urlencoded({extended: true}));
@@ -30,7 +35,9 @@ const corsOptions ={
 app.use(cors(corsOptions))
 app.use('/api/usuario',UsuarioRoutes)
 app.use('/api/condicion',condicionRoutes)
+app.use('/api/Tronadura', TronaduraRoutes)
 
+app.use(express.static(path.join(__dirname, './public/storages')))
 const PORT=process.env.PORT || 4000
 
 app.listen(PORT,() =>{

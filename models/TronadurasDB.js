@@ -1,65 +1,36 @@
 import mongoose from 'mongoose'
 
 const TronaduraSchema = mongoose.Schema({
+    Nombre:{
+        type:String,
+        Required:true,
+    },
     fecha:{
-        type:Date,
+        type:Date, 
         required:true,
         default:Date.now()
     },
-    fases:{
-        type:String,
-        required:true,
+    Fecha_programada:{
+        type:Date, 
+        required:true
     },
-    fasesTronadas:{
-        type:String,
-        required:true,
+    tabla_columna:{
+        type:Array,
+        required:true
     },
-    cantidadFuegos:{
-        type:String,
-        required:true,
-    },
-    CondicionMeteo:{
-        type:String,
-        required:true,
-    },
-    suspensionDetalle:{
-        type:String,
-        default:null,
-    },
-    fechaRepro:{
-        type:Date,
-        required:false,
-        default:Date.now()
-    },
-    fechaInforme:{
-        type:Date,
-        required:false,
-        default:Date.now()
-    },
-    fasesSusp:{
-        type:String,
-        default:null,
-    },
-    horaEjecu:{
-        type:String,
-        default:null,
-    },
-    horaSusp:{
-        type:String,
-        default:null,
-    },
-    razonSusp:{
-        type:String,
-        default:null,
-    },
-    comentarios:{
-        type:String,
-        default:null,
+    tabla_contenido:{
+        type:Array,
+        required:true
     },
     usuario:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Usuario'
-    }
+    },
+    user:{
+        type:String,
+        required:false,
+        trim:true,
+    },
 },
 {
     timestamps:true,

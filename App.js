@@ -1,4 +1,5 @@
 import express from 'express'
+import fileUpload from 'express-fileupload'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import conectarDB from './config/db.js'
@@ -37,7 +38,6 @@ app.use('/api/usuario',UsuarioRoutes)
 app.use('/api/condicion',condicionRoutes)
 app.use('/api/Tronadura', TronaduraRoutes)
 
-app.use(express.static(path.join(__dirname, './public/storages')))
 const PORT=process.env.PORT || 4000
 
 app.listen(PORT,() =>{

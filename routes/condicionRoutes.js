@@ -10,13 +10,11 @@ import checkAuth from '../middleware/authMiddleware.js'
 import singleUpload from '../middleware/multer.js'
 
 const router = express.Router()
-// singleUpload,(req, res) => {
-//     console.log(req.file)
-//  }
+
 router.route('/')
     .post(checkAuth,agregarCondicion)
     .get (checkAuth,obtenerCondiciones)
-
+    .post(checkAuth,singleUpload)
 router.route('/today')  
     .get (checkAuth,obtenerCondicionesDia)
 

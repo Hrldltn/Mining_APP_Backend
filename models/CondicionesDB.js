@@ -38,6 +38,10 @@ const condicionesSchemas = mongoose.Schema({
         type:String,
 
     },
+    Dataurl:{
+        type:Buffer,
+
+    },
     usuario:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Usuario'

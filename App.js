@@ -6,7 +6,6 @@ import conectarDB from './config/db.js'
 import UsuarioRoutes from './routes/usuarioRoutes.js'
 import condicionRoutes from './routes/condicionRoutes.js'
 import TronaduraRoutes from './routes/TronaduraRoutes.js'
-import mantencionRoutes from './routes/mantencionRoutes.js'
 import path from 'path'
 import {fileURLToPath} from 'url'
 
@@ -39,7 +38,7 @@ app.use(cors(corsOptions))
 app.use('/api/usuario',UsuarioRoutes)
 app.use('/api/condicion',condicionRoutes)
 app.use('/api/Tronadura', TronaduraRoutes)
-app.use('/api/Mantencion', mantencionRoutes)
+
 
 const PORT=process.env.PORT || 4000
 

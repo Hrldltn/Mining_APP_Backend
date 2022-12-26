@@ -39,9 +39,8 @@ const actualizarTronadura = async (req,res) => {
   if(!tronadura){
     return res.status(404).json({msg:'No Encontrado'})
   }
-
   //actualizar condicion
-  tronadura.Nombre = req.body.Nombre || condicion.Nombre
+  tronadura.Nombre_doc = req.body.Nombre_doc || tronadura.Nombre_doc
   tronadura.fecha = req.body.fecha || tronadura.fecha
   tronadura.Fecha_programada = req.body.Fecha_programada || tronadura.Fecha_programada
   tronadura.tabla_columna = req.body.tabla_columna || tronadura.tabla_columna

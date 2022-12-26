@@ -51,6 +51,10 @@ const condicionesSchemas = mongoose.Schema({
         required:false,
         trim:true,
     },
+    fechaEstimada:{
+        type:Date, 
+        required:true,
+    }
 },
 {
     timestamps:true,

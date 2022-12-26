@@ -44,6 +44,8 @@ const obtenerCondicionesDia = async (req,res) => {
   }
 
 }
+
+
   
 const obtenerCondicion = async (req,res) => {
   const {id } = req.params

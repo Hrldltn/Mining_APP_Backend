@@ -18,7 +18,7 @@ router
 
 router
     .route('/:id')
-    .put(checkAuth,obtenerTronadura)
+    .get(checkAuth,obtenerTronadura)
     .put(checkAuth,actualizarTronadura)
     .delete(checkAuth,eliminarTronadura)
     

@@ -15,6 +15,7 @@ router.route('/')
     .post(checkAuth,agregarCondicion)
     .get (checkAuth,obtenerCondiciones)
     .post(checkAuth,singleUpload)
+    
 router.route('/today')  
     .get (checkAuth,obtenerCondicionesDia)
 
